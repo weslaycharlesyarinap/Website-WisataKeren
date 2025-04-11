@@ -1,0 +1,218 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="smk.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Wisata Keren</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
+
+    <!-- Header -->
+    <section id="home">
+      <header>
+          <nav id="navbar">
+              <div class="logo">Wisata<span>Keren</span></div>
+              <!-- Hamburger Icon -->
+              <div class="hamburger" id="hamburger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </div>
+              <ul class="nav-links" id="navLinks">
+                  <li><a href="#home">Home</a></li>
+                  <li><a href="#about">Tentang Kami</a></li>
+                  <li><a href="#gallery">Galeri</a></li>
+                  <li><a href="#contact">Kontak</a></li>
+                  <li><a href="#ikutikami">Ikuti Kami</a></li>
+              </ul>
+          </nav>
+          <div class="hero">
+              <h1>Jelajahi Keindahan Dunia</h1>
+              <p>Temukan destinasi wisata terbaik di seluruh dunia.</p>
+              <a href="#gallery" class="btn">Lihat Galeri</a>
+          </div>
+      </header>
+  </section>
+
+    <!-- Tentang -->
+    <section id="about" class="about">
+      <h2>Tentang Kami</h2>
+      <p>
+        Kami adalah platform yang membantu Anda menemukan tempat-tempat wisata
+        terbaik di seluruh dunia. Dengan informasi lengkap dan panduan
+        perjalanan, kami siap membuat liburan Anda lebih berkesan, Kami adalah
+        penyedia layanan wisata yang berdedikasi untuk menghadirkan pengalaman
+        perjalanan yang tak terlupakan. Dengan semangat cinta alam dan budaya
+        lokal, kami menawarkan berbagai paket wisata yang dirancang khusus untuk
+        memenuhi kebutuhan dan keinginan setiap traveler. Mulai dari petualangan
+        alam yang menantang, wisata edukatif, hingga perjalanan santai yang
+        menenangkan, kami siap menemani langkah Anda menjelajahi keindahan
+        Indonesia. Bersama kami, setiap perjalanan bukan sekadar
+        destinasi—tetapi juga kisah yang akan selalu dikenang.
+      </p>
+    </section>
+
+    <br />
+    <section id="gallery" class="gallery">
+      <h2>Galeri Wisata</h2>
+      <div class="gallery-container">
+        <!-- Gambar 1 -->
+        <div class="gallery-item">
+          <img
+            src="wisata1 (1).png"
+            alt="Bali"
+            data-src="asset/wisata1 (1).png"
+          />
+          <div class="gallery-caption">
+            <h3>Pura Ulun Danu Beratan</h3>
+            <br />
+            <p>
+              "Pura Ulun Danu Beratan, yang terletak di tepi Danau Beratan,
+              Bedugul, Bali, menawarkan panorama alam yang memukau dengan latar
+              belakang pegunungan yang sejuk dan udara yang menyegarkan.
+              Keindahan arsitektur pura yang tampak mengapung di atas danau
+              menjadikannya salah satu destinasi wisata spiritual dan fotografi
+              paling terkenal di Bali."
+            </p>
+          </div>
+        </div>
+
+        <!-- Gambar 2 -->
+        <div class="gallery-item">
+          <img
+            src="wisata1 (2).png"
+            alt="Paris"
+            data-src="asset/wisata1 (2).png"
+          />
+          <div class="gallery-caption">
+            <h3>Gapura Handara</h3>
+            <br />
+            <p>
+              "Gapura Handara di Bali merupakan salah satu destinasi wisata yang
+              memukau dengan nuansa budaya dan alam yang harmonis. Gerbang megah
+              bergaya Bali ini berdiri anggun di tengah lanskap hijau
+              pegunungan, menciptakan suasana tenang dan eksotis yang
+              menjadikannya tempat sempurna untuk berfoto dan menikmati
+              keindahan alam Pulau Dewata."
+            </p>
+          </div>
+        </div>
+
+        <!-- Gambar 3 -->
+        <div class="gallery-item">
+          <img
+            src="wisata1 (3).png"
+            alt="Tokyo"
+            data-src="asset/wisata1 (3).png"
+          />
+          <div class="gallery-caption">
+            <h3>Dusun Bambu Leisure Park</h3>
+            <br />
+            <p>
+              "Dusun Bambu di Lembang menawarkan suasana liburan yang tenang dan
+              menyegarkan, dengan pemandangan danau alami, pepohonan rindang,
+              serta vila kayu bergaya tradisional yang memanjakan mata. Tempat
+              ini menjadi pilihan sempurna untuk beristirahat sejenak dari
+              hiruk-pikuk kota dan menikmati kebersamaan bersama keluarga."
+            </p>
+          </div>
+        </div>
+
+        <!-- Gambar 4 -->
+        <div class="gallery-item">
+          <img
+            src="wisata1 (4).png"
+            alt="New York"
+            data-src="asset/wisata1 (4).png"
+          />
+          <div class="gallery-caption">
+            <h3>Raja Ampat</h3>
+            <br />
+            <p>
+              "Raja Ampat adalah permata tersembunyi di ujung timur Indonesia
+              yang menawarkan panorama laut terindah di dunia. Dengan gugusan
+              pulau-pulau kecil yang eksotis dan air laut sebening kristal,
+              tempat ini menjadi destinasi impian bagi pecinta alam, penyelam,
+              dan siapa pun yang ingin menikmati keajaiban alam yang belum
+              tersentuh."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Lightbox Container untuk buka foto-->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <img class="lightbox-content" id="lightboxImage" />
+    </div>
+
+    <br />
+    <!-- Kontak -->
+    <section id="contact" class="contact">
+      <h2>Kontak Kami</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="Nama Anda" required />
+        <input type="email" placeholder="Email Anda" required />
+        <textarea placeholder="Pesan Anda" required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </section>
+
+    <section id="ikutikami" class="text">
+      <div class="hero-text">
+        <h2>Sosial Media</h2>
+      </div>
+
+      <div class="social-icons">
+        <a
+          href="https://www.facebook.com/weslay.yarinap.1?mibextid=ZbWKwL"
+          target="_blank"
+          class="facebook-button"
+        >
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+        <a
+          href="https://wa.me/message/CI5B77GN3NL2D1"
+          target="_blank"
+          class="WhatsApp-button"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a
+          href="https://www.tiktok.com/@bop_weslay?_t=ZS-8t0RdMm7vrG&_r=1"
+          target="_blank"
+          class="tiktok-button"
+        >
+          <i class="fab fa-tiktok"> </i>
+        </a>
+        <a
+          href="https://www.instagram.com/poweslay?igsh=c2JqdzZ0cHlhYnN5"
+          target="_blank"
+          class="instagram-button"
+        >
+          <i class="fab fa-instagram"> </i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 WisataKeren. Hak Cipta W.Charles.Y All rights reserved.</p>
+      <p>Papua Tengah Nabire.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
