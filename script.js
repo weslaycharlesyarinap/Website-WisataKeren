@@ -1,65 +1,141 @@
-// Select elements
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.getElementById("navLinks");
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Elements ---
+    const navbar = document.getElementById('navbar')
+    const hamburger = document.getElementById('hamburger')
+    const navLinks = document.getElementById('navLinks')
+    const loadingScreen = document.getElementById('loading-screen')
+    const galleryItems = document.querySelectorAll('.gallery-item')
+    const lightbox = document.getElementById('lightbox')
+    const lightboxImage = document.getElementById('lightboxImage')
+    const closeLightbox = document.querySelector('.lightbox .close')
+    const contactForm = document.getElementById('contactForm')
 
-// Add click event listener to hamburger
-hamburger.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+    const themeToggle = document.getElementById('themeToggle')
 
-// Optional: Close the menu when a link is clicked
-document.querySelectorAll(".nav-links a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-  });
-});
+    // --- Theme Switching ---
+    const currentTheme = localStorage.getItem('theme') || 'dark'
+    document.documentElement.setAttribute('data-theme', currentTheme)
 
-// Handle form submission
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    alert("Pesan Anda telah terkirim!");
-    this.reset();
-  });
+    themeToggle.addEventListener('click', () => {
+        const newTheme =
+            document.documentElement.getAttribute('data-theme') === 'dark'
+                ? 'light'
+                : 'dark'
+        document.documentElement.setAttribute('data-theme', newTheme)
+        localStorage.setItem('theme', newTheme)
+    })
 
-// Ambil elemen-elemen yang diperlukan
-const galleryImages = document.querySelectorAll(".gallery-container img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const closeLightbox = document.querySelector(".lightbox .close");
+    // --- Loading Screen ---
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0'
+            loadingScreen.style.visibility = 'hidden'
+        }, 1500)
+    })
 
-// Fungsi untuk membuka lightbox
-galleryImages.forEach((image) => {
-  image.addEventListener("click", () => {
-    const src = image.getAttribute("src"); // Ambil path gambar dari atribut data-src
-    lightboxImage.src = src; // Set sumber gambar lightbox
-    lightbox.style.display = "block"; // Tampilkan lightbox
-  });
-});
+    // --- Navbar Scroll Effect ---
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled')
+        } else {
+            navbar.classList.remove('scrolled')
+        }
+    })
 
-// Fungsi untuk menutup lightbox
-closeLightbox.addEventListener("click", () => {
-  lightbox.style.display = "none"; // Sembunyikan lightbox
-});
+    // --- Mobile Menu Toggle ---
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active')
+        navLinks.classList.toggle('active')
+    })
 
-// Tutup lightbox jika klik di luar gambar
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) {
-    lightbox.style.display = "none";
-  }
-});
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach((link) => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active')
+            navLinks.classList.remove('active')
+        })
+    })
 
+    // --- Reveal on Scroll Animation ---
+    const revealCallback = (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active')
+                // Optional: stop observing after reveal
+                // observer.unobserve(entry.target);
+            }
+        })
+    }
 
-// Fungsi untuk menyembunyikan loading screen
-window.addEventListener("load", () => {
-  const loadingScreen = document.getElementById("loading-screen");
+    const revealObserver = new IntersectionObserver(revealCallback, {
+        threshold: 0.15,
+    })
 
-  // Tunggu 3 detik sebelum menyembunyikan loading screen
-  setTimeout(() => {
-    loadingScreen.style.display = "none";
-  }, 3000); // 3000ms = 3 detik
-});
+    document.querySelectorAll('.reveal').forEach((el) => {
+        revealObserver.observe(el)
+    })
 
+    // --- Lightbox ---
+    galleryItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img')
+            lightboxImage.src = img.src
+            lightbox.style.display = 'flex'
+            document.body.style.overflow = 'hidden' // Prevent scroll
+        })
+    })
 
+    const closeLightboxFunc = () => {
+        lightbox.style.display = 'none'
+        document.body.style.overflow = 'auto'
+    }
 
+    closeLightbox.addEventListener('click', closeLightboxFunc)
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightboxFunc()
+        }
+    })
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+            closeLightboxFunc()
+        }
+    })
+
+    // --- Form Handling ---
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const btn = contactForm.querySelector('button')
+            const originalText = btn.innerText
+
+            btn.innerText = 'Mengirim...'
+            btn.disabled = true
+
+            // Simulate API call
+            setTimeout(() => {
+                alert('Terima kasih! Pesan Anda telah terkirim.')
+                contactForm.reset()
+                btn.innerText = originalText
+                btn.disabled = false
+            }, 2000)
+        })
+    }
+
+    // --- Smooth Scrolling for all internal links ---
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault()
+            const target = document.querySelector(this.getAttribute('href'))
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth',
+                })
+            }
+        })
+    })
+})
